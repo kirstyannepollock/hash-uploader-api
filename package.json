@@ -1,0 +1,19 @@
+{
+  "name": "hash-uploader-api",
+  "version": "1.0.0",
+  "description": "test exercise for api",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kirsty Pollock",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
+}
