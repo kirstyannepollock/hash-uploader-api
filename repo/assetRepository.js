@@ -7,14 +7,14 @@ const hashing = require('../hashing');
 class AssetRepository {
     constructor() {
 
-        var xml = '<persons><person><name>Kirsty</name><location>Berlin</location></person></persons>';
-
+      
         // Create testing repo with the files keyed by their hashes
         this.assets = new Map([
-            ['7pen7mWClOf5uP64ho6mxQ31BLREcLiILFwZ3h3Z8cs=', new asset('7pen7mWClOf5uP64ho6mxQ31BLREcLiILFwZ3h3Z8cs=', 'test-file.xml', 'XML File', xml)],
-            ['HASH2', new asset('HASH2', 'test-file.jpg', 'Image File')]
+            ['7pen7mWClOf5uP64ho6mxQ31BLREcLiILFwZ3h3Z8cs=', new asset('7pen7mWClOf5uP64ho6mxQ31BLREcLiILFwZ3h3Z8cs=', 'files/test-file.xml', 'XML File')],
+            ['fpGq6b63eEXCcyGwmC4wRkW0mCc3iTUdHp2jiqXvJUY=', new asset('fpGq6b63eEXCcyGwmC4wRkW0mCc3iTUdHp2jiqXvJUY=', 'files/test-image.jpg', 'Image File')]
         ]);
     }
+
 
     getByHash(hash) {
         return this.assets.get(hash);
@@ -30,7 +30,7 @@ class AssetRepository {
     }
 
     create(asset) {
-        
+
         var hash = hashing.getHash(asset);
         // error?
         if (hash.error) {

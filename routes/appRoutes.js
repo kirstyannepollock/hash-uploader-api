@@ -3,6 +3,8 @@
 
 const assetRepo = require('../repo/assetRepository');
 
+const fileDownload = require('../file-download');
+
 var appRouter = function (app) {
   app
     .get("/", function(req, res) {
@@ -14,7 +16,7 @@ var appRouter = function (app) {
     })
     .get('/get/:hash', (req, res) => {
       const result = assetRepo.getByHash(req.params.hash);
-      res.send(result);
+      fileDownload.getFile(res, { fileName: result.fileName });
     })
     .get('/all', (req, res) => {
       const result = assetRepo.getAll();
@@ -30,6 +32,22 @@ var appRouter = function (app) {
       const asset = req.body;
       const result = assetRepo.create(asset);
       res.end(result);
+    })
+    .post('/createFromFile', (req, res) => {
+      var asset = req.body; //should really be new Asset()
+      fileDownload.getContent(
+        { fileName: asset.fileName,
+          handleContent: function(content){
+            asset.content = content;
+            const result = assetRepo.create(asset);
+            res.end(result);
+          }
+        })
+      
+    })
+    .post('/getFile', (req, res) => {
+      const params = req.body;
+      fileDownload.getFile(res,params)
     });
 }
 
