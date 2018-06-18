@@ -31,7 +31,7 @@ class AssetRepository {
 
     create(asset) {
         //assumes the client call sends also the content. 
-        //TO DO: save as file!!!Cam9ge
+        //TO DO: save as file!!!
         var hash = hashing.getHash(
             {
                 content: asset.content,
