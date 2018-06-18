@@ -35,6 +35,8 @@ var appRouter = function (app) {
     })
     .post('/createFromFile', (req, res) => {
       var asset = req.body; //should really be new Asset()
+
+      //assumes file is already uploaded to server
       fileDownload.getContent(
         { fileName: asset.fileName,
           handleContent: function(content){

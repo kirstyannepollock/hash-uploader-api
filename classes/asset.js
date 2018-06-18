@@ -8,7 +8,7 @@ class Asset {
 
         // ...might not be the best of ideas for images or video
         // but will do for the XML example for now.
-        this.content = content;
+       // this.content = content;
         this.contentType = contentType;
     }
 }
