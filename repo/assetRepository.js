@@ -42,6 +42,11 @@ class AssetRepository {
             return hash.error;
         } else {
             //already exists?
+            //to do - option to force the save and overwrite the existing entry/ file?
+            if (this.assets.get(hash)) {
+                return JSON.stringify({error: "hash " + hash + " already exists"});
+            }
+
             asset = new Asset( hash, asset.fileName, asset.description, asset.contentType);
             asset.hash = hash;
             this.assets.set(asset.hash, asset);
