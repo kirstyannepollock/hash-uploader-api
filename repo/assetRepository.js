@@ -45,6 +45,8 @@ class AssetRepository {
             asset = new Asset( asset.hash, asset.filename, asset.description, asset.contentType);
             asset.hash = hash;
             this.assets.set(asset.hash, asset);
+
+            //TODO: should be JSON
             return "Added asset with hash = " + asset.hash;
         }
 
