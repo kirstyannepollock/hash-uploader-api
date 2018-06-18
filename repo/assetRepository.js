@@ -42,7 +42,7 @@ class AssetRepository {
             return hash.error;
         } else {
             //already exists?
-            asset = new Asset( asset.hash, asset.filename, asset.description, asset.contentType);
+            asset = new Asset( hash, asset.fileName, asset.description, asset.contentType);
             asset.hash = hash;
             this.assets.set(asset.hash, asset);
 
